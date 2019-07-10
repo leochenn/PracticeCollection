@@ -19,6 +19,10 @@ public class ScrollDragMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scroll_drag_main);
     }
 
+    private void startActivity(Class<? extends Activity> cls) {
+        startActivity(new Intent(this, cls));
+    }
+
     public void Scroll_Drag(View view) {
         startActivity(ScrollDragActivity.class);
     }
@@ -27,7 +31,7 @@ public class ScrollDragMainActivity extends AppCompatActivity {
         startActivity(ViewDragHelperActivity.class);
     }
 
-    private void startActivity(Class<? extends Activity> cls) {
-        startActivity(new Intent(this, cls));
+    public void Navigation_Drawer(View view) {
+        startActivity(NavigationDrawActivity.class);
     }
 }

@@ -27,15 +27,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Scroll_Drag"
-                android:onClick="Scroll_Drag"
-                android:orientation="vertical"/>
+                android:onClick="Scroll_Drag"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="View_Drag_Helper"
-                android:onClick="View_Drag_Helper"
-                android:orientation="vertical"/>
+                android:onClick="View_Drag_Helper"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Navigation_Drawer"
+                android:onClick="Navigation_Drawer"/>
         </LinearLayout>
     </ScrollView>
 

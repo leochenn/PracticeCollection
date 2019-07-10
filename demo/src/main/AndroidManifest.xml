@@ -20,10 +20,13 @@
         </activity>
 
         <activity android:name=".scroll_drag.ScrollDragMainActivity"/>
-
         <activity android:name=".scroll_drag.ScrollDragActivity"/>
-
         <activity android:name=".scroll_drag.ViewDragHelperActivity"/>
+
+        <activity
+            android:name=".scroll_drag.NavigationDrawActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
