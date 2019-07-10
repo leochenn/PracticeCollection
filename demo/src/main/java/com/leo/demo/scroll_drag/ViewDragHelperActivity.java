@@ -20,12 +20,12 @@ public class ViewDragHelperActivity extends AppCompatActivity {
     }
 
     public void open(View view) {
-        Toast.makeText(view.getContext(), ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(view.getContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
         viewDragHelperLayout.openDrawer();
     }
 
     public void close(View view) {
-        Toast.makeText(view.getContext(), ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(view.getContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
         viewDragHelperLayout.closeDrawer();
     }
 }

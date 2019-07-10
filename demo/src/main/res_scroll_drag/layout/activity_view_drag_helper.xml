@@ -1,42 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<com.leo.demo.scroll_drag.ViewDragHelperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                               android:id="@+id/view_drag_helper_layout"
+                                               android:layout_width="match_parent"
+                                               android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:onClick="open"
-        android:text="open"/>
-
-    <com.leo.demo.scroll_drag.ViewDragHelperLayout
-        android:id="@+id/view_drag_helper_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:background="@android:color/darker_gray">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:onClick="open"
+            android:text="open"/>
+    </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/layout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimary"/>
+    <LinearLayout
+        android:id="@+id/ll_menu"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent">
 
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:id="@+id/layout2"
-            android:background="@color/colorAccent">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="close"
-                android:text="close"/>
-        </LinearLayout>
-
-    </com.leo.demo.scroll_drag.ViewDragHelperLayout>
-</RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="close"
+            android:text="close"/>
+    </LinearLayout>
+</com.leo.demo.scroll_drag.ViewDragHelperLayout>
