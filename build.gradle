@@ -25,3 +25,36 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    demoCompileSdkVersion = 28
+    demoBuildToolsVersion = '28.0.2'
+    demoMinSdkVersion = 14
+    demoTargetSdkVersion = 28
+}
+
+def log(String log) {
+    println "→→→→→→→→→→ " + log
+}
+
+def deleteFile(String path) {
+    File file = new File(path);
+    if (file.isDirectory()) {
+        file.listFiles().each { a ->
+            deleteFile(a.getAbsolutePath())
+        }
+    } else {
+        log "删除文件" + file.delete() + ", " + file.getAbsolutePath()
+    }
+}
+
+String getAndroidSdkDir() {
+    Properties props = new Properties()
+    props.load(new FileInputStream(project.rootProject.file("local.properties")))
+    // 获取android sdk路径
+    return props.get('sdk.dir')
+}
+
+task testOrder() {
+    log getPath()
+}
