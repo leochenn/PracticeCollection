@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".custom_view.CustomViewActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -26,16 +26,9 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Scroll_Drag"
-                android:onClick="Scroll_Drag"
-                android:orientation="vertical"/>
+                android:text="Label_View"
+                android:onClick="Label_View"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View"
-                android:onClick="View"
-                android:orientation="vertical"/>
         </LinearLayout>
     </ScrollView>
 
