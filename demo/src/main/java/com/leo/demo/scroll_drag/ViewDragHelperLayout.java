@@ -66,12 +66,15 @@ public class ViewDragHelperLayout extends FrameLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return mViewDragHelper.shouldInterceptTouchEvent(ev);
+        boolean intercept = mViewDragHelper.shouldInterceptTouchEvent(ev);
+        LogUtil.d(TAG, "onInterceptTouchEvent", intercept, ev.getAction());
+        return intercept;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mViewDragHelper.processTouchEvent(event);
+        LogUtil.d(TAG, "onTouchEvent", event.getAction());
         return true;
     }
 
@@ -132,8 +135,16 @@ public class ViewDragHelperLayout extends FrameLayout {
         @Override
         public void onEdgeDragStarted(int edgeFlags, int pointerId) {
             LogUtil.d(TAG, "onEdgeDragStarted", edgeFlags);
+            // 这个View在边沿模式时一般摸不到，所以其实拿到的不是想要的childView，所以一般我们会在回调onEdgeDragStarted()
+            // 方法中重写手动调用captureChildView()
+            // 方法，传入我们摸不到的View，这样就相当于绕过tryCaptureView将状态设置为STATE_DRAGGING了
+            //作者：工匠若水
+            //原文：https://blog.csdn.net/yanbober/article/details/50419059
+
             //进行制定view里面会调用接口onViewCaptured()，然后将View回调出来
-            mViewDragHelper.captureChildView(mMenuView, pointerId);
+            if (edgeFlags == ViewDragHelper.EDGE_LEFT) {
+                mViewDragHelper.captureChildView(mMenuView, pointerId);
+            }
         }
 
         //这个是如果设置点击事件后，能够拖动里面view,否则就不能点击
