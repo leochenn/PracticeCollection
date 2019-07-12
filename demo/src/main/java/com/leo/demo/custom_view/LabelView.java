@@ -11,8 +11,12 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.leo.demo.R;
+import com.leo.demo.utils.LogUtil;
 
 public class LabelView extends View {
+
+    private static final String TAG = "LabelView";
+
     private String mTextContent;
     private int mTextColor;
     private float mTextSize;
@@ -264,17 +268,49 @@ public class LabelView extends View {
         canvas.restore();
     }
 
+    int measuredWidth;
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int measuredWidth = measureWidth(widthMeasureSpec);
+        if (measuredWidth == 0) {
+            measuredWidth = measureWidth(widthMeasureSpec);
+        }
         setMeasuredDimension(measuredWidth, measuredWidth);
     }
 
-    /** 确定View宽度大小 */
+    // 总结(根据当前demo测量结果，不一定完全准确，不过通过阅读ViewGroup源码基本一致)：
+    // 1.当View的父容器宽度为match_parent：
+    //   a.View宽度为match_parent时：Mode=EXACTLY,Size=父容器宽度值
+    //   b.View宽度为确定值时：Mode=EXACTLY,Size=自身确定值
+    //   c.View宽度为wrap_content时：Mode=AT_MOST,Size=父容器宽度值=1.a.Size
+
+    // 2.当View的父容器宽度为固定值：
+    //   a.View宽度为match_parent时：Mode=EXACTLY,Size=父容器固定宽度值
+    //   b.View宽度为确定值时：Mode=EXACTLY,Size=自身确定值
+    //   c.View宽度为wrap_content时：Mode=AT_MOST,Size=父容器固定宽度值
+
+    // 3.当View的父容器宽度为wrap_content：
+    //   a.View宽度为match_parent时：Mode=AT_MOST,Size=父容器宽度值 同1.a
+    //   b.View宽度为确定值时：Mode=EXACTLY,Size=自身确定值
+    //   c.View宽度为wrap_content时：Mode=AT_MOST,Size=父容器宽度值 同1.a
+
+    // 最顶层DecorView测量时的MeasureSpec是由ViewRootImpl中getRootMeasureSpec方法确定的
+    // LayoutParams宽高参数均为MATCH_PARENT，specMode是EXACTLY，specSize为物理屏幕大小
+
+    /**
+     *  系统中的测量流程请参阅
+     * {@link android.view.ViewGroup#getChildMeasureSpec}
+     * 源码：D:\Android-Sdk\sdk\platforms\android-28\android\view\ViewGroup.java(getChildMeasureSpec#6771)
+     * 参考：2.https://blog.csdn.net/yanbober/article/details/46128379
+     */
+
     private int measureWidth(int widthMeasureSpec) {
         int result;
         int specMode = MeasureSpec.getMode(widthMeasureSpec);
         int specSize = MeasureSpec.getSize(widthMeasureSpec);
+
+        LogUtil.d(TAG, "MeasureSpec", specSize, specMode);
+
+        // match_parent
         if (specMode == MeasureSpec.EXACTLY) {//大小确定直接使用
             result = specSize;
         } else {
@@ -284,6 +320,7 @@ public class LabelView extends View {
             float textWidth = mTextPaint.measureText(mTextContent + "");
             result = (int) ((padding + (int) textWidth) * Math.sqrt(2));
             //如果父视图的测量要求为AT_MOST,即限定了一个最大值,则再从系统建议值和自己计算值中去一个较小值
+            // wrap_content
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
             }
