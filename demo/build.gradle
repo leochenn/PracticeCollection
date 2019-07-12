@@ -5,6 +5,10 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
+    //Android 6.0 release removes support for the Apache HTTP client
+    // 为了编译Volley源码需要加上,会将org.apache.http相关代码打入包体
+    useLibrary 'org.apache.http.legacy'
+
     compileSdkVersion demoCompileSdkVersion
 
     defaultConfig {
