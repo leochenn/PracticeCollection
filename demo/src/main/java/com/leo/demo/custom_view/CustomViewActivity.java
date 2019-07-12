@@ -29,4 +29,8 @@ public class CustomViewActivity extends AppCompatActivity {
     public void Label_View(View view) {
         startActivity(LabelViewActivity.class);
     }
+
+    public void Screen_Shot(View view) {
+        startActivity(GlobeScreenShotActivity.class);
+    }
 }

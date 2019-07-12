@@ -29,6 +29,11 @@
                 android:text="Label_View"
                 android:onClick="Label_View"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Screen_Shot"
+                android:onClick="Screen_Shot"/>
         </LinearLayout>
     </ScrollView>
 
