@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.leo.demo.R;
-import com.leo.demo.utils.LogUtil;
+import com.leo.utils.log.LogUtil;
 
 /**
  * Created by Leo on 2019/7/10.

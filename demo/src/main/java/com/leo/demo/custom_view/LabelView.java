@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.leo.demo.R;
-import com.leo.demo.utils.LogUtil;
 
 public class LabelView extends View {
 

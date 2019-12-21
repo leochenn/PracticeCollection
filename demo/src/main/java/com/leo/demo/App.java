@@ -3,7 +3,7 @@ package com.leo.demo;
 import android.app.Application;
 import android.content.Context;
 
-import com.leo.demo.utils.LogUtil;
+import com.leo.utils.log.LogUtil;
 
 /**
  * Created by Leo on 2019/7/10.

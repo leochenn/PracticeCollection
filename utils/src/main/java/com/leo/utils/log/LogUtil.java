@@ -1,8 +1,8 @@
-package com.leo.demo.utils;
+package com.leo.utils.log;
 
 import android.util.Log;
 
-import com.leo.demo.BuildConfig;
+import com.leo.utils.BuildConfig;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

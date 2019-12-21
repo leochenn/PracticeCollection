@@ -69,6 +69,7 @@ dependencies {
     //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'
     debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation project(path: ':utils')
 //    releaseImplementation "net.igenius:stetho-no-op:1.1"
 }
 

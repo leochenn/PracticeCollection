@@ -1,11 +1,9 @@
 package com.leo.demo.third.volley;
 
 import android.content.Context;
-import android.text.TextUtils;
 
 import com.leo.demo.third.volley.toolbox.StringRequest;
 import com.leo.demo.third.volley.toolbox.Volley;
-import com.leo.demo.utils.LogUtil;
 
 import java.util.Map;
 
