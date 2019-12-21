@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
+import com.leo.utils.log.LogUtil;
+
 /**
  * Created by Leo on 2019/7/11.
  */
